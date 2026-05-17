@@ -1,0 +1,42 @@
+services:
+  postgis:
+    image: postgis/postgis:16-3.4
+    container_name: postgis
+    environment:
+      POSTGRES_DB: gis
+      POSTGRES_USER: gisuser
+      POSTGRES_PASSWORD: gispass
+    volumes:
+      - ./init-db:/docker-entrypoint-initdb.d
+      - postgis_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+
+  geoserver:
+    image: kartoza/geoserver:2.24.2
+    container_name: geoserver
+    environment:
+      GEOSERVER_ADMIN_USER: admin
+      GEOSERVER_ADMIN_PASSWORD: geoserver
+    volumes:
+      - ./geoserver_data:/opt/geoserver/data_dir
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgis
+    restart: unless-stopped
+
+  # Контейнер с GDAL для импорта (правильный образ)
+  gdal:
+    image: ghcr.io/osgeo/gdal:alpine-small-latest
+    container_name: gdal
+    volumes:
+      - .:/data
+    command: tail -f /dev/null
+    depends_on:
+      - postgis
+    restart: unless-stopped
+
+volumes:
+  postgis_data:

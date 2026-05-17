@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ГеоДанные — Лабораторная 2</title>
+    <style>
+      body { margin: 0; padding: 0; overflow: hidden; font-family: Arial, sans-serif; }
+      #map { width: 100vw; height: 100vh; }
+      .controls {
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        background: rgba(255, 255, 255, 0.95);
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        z-index: 1000;
+        min-width: 180px;
+      }
+      .controls h3 { margin: 0 0 10px 0; }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+
+    <div class="controls">
+      <h3>Слои</h3>
+      <label><input type="checkbox" id="buildings" checked> 🏠 Здания</label><br><br>
+      <label><input type="checkbox" id="roads" checked> 🛣️ Дороги</label><br><br>
+      <label><input type="checkbox" id="poi" checked> 📍 POI</label>
+    </div>
+
+    <script type="module" src="/src/index.js"></script>
+  </body>
+</html>
