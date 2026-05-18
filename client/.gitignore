@@ -26,6 +26,11 @@ dist-ssr
 # Docker (папки которые создаются автоматически при запуске)
 geoserver_data/
 postgis_data/
+geoserver_data/gwc/diskquota_page_store_hsql/diskquota.lck
+geoserver_data/gwc/diskquota_page_store_hsql/diskquota.log
+geoserver_data/gwc/geowebcache_2026-05-17T115256.bak
+geoserver_data/logs/geoserver.log
+geoserver_data/tomcat_pass.txt
 
 # Client (дополнительные файлы клиента)
 client/dist/

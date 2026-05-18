@@ -23,7 +23,7 @@ CREATE TABLE buildings (
 DROP TABLE IF EXISTS roads CASCADE;
 CREATE TABLE roads (
     id SERIAL PRIMARY KEY,
-    geom geometry(LineString, 4326),чк
+    geom geometry(LineString, 4326),
     osm_id TEXT,
     highway TEXT,
     name TEXT,
